@@ -9,23 +9,36 @@ pattern = r'\d'
 
 def EYE(event):
     global eye
-    eye =+ 3
+    eye =+ 1
+    text_box.toggle()
+    
+
 
 def textbox(event):
     text = text_box.text
+    advice_list = advice.text
     print(text)
     score = 0
+
     if len(text) > 5: 
         score += 10
+    else:   
+        advice.text = "adding more characters could greatly improve your passwords strength\n"
     if len(text) > 7: 
         score += 10
     if len(text) > 9:
         score += 5
-    if len(text) > 13:
+    if len(text) > 11:
+        score += 5
+    if len(text) > 14:
+        score += 5
+    if len(text) > 19:
         score += 5
     if not text.isalnum():
         score = score + 20
     if text.isdigit():
+        score = score + 10
+    if text.isupper():
         score = score + 10
     if re.search(pattern, text):
         score += 10
@@ -38,8 +51,14 @@ def textbox(event):
         label.text = "greasy"
     elif text == "Sam":
         label.text = "ginger"
-    elif score >= 50:
-        label.text = "pretty decent"
+    elif score >= 70:
+        label.text = "awesome sauce"
+    elif score >= 60:
+        label.text = "very good"
+    elif score >= 40:
+        label.text = "good"
+    elif score >= 30:
+        label.text = "ok"
     elif score >= 20:
         label.text = "ehh"
     else: 
@@ -48,25 +67,41 @@ def textbox(event):
 app = gp.GooeyPieApp(">:)")
 app.width = 400
 app.height = 100
+tabs_cont = gp.TabContainer(app)
+tabs_cont.width = 400
+tabs_cont.height = 100
+tab1_tab = gp.Tab(tabs_cont, 'Password')
+tab2_tab = gp.Tab(tabs_cont, 'Feedback')
 
-eye_btn = gp.Button(app, 'sneak peek?', EYE)
+
+eye_btn = gp.Button(tab1_tab, 'sneak peek?', EYE)
 
 
 if eye % 2 != 0:
-    text_box = gp.Input(app)
+    text_box = gp.Input(tab1_tab)
     text_box.add_event_listener('change', textbox)
 else:
-    text_box = gp.Secret(app)
+    text_box = gp.Secret(tab1_tab)
     text_box.add_event_listener('change', textbox)
 
+advice = gp.Label(tab2_tab,'')
+text_box.add_event_listener('change', textbox)
 
 
 
+label = gp.Label(tab1_tab, '')
+tab1_tab.set_grid(2,2)
+tab1_tab.add(text_box, 1, 1)
+tab1_tab.add(label, 2, 1)
+tab1_tab.add(eye_btn, 1, 2, align='center')
 
-label = gp.Label(app, '')
+tab2_tab.set_grid(1,2)
+tab2_tab.add(advice, 1,1)
+
+tabs_cont.add(tab1_tab)
+tabs_cont.add(tab2_tab)
+
 app.set_grid(2,2)
-app.add(text_box, 1, 1)
-app.add(label, 2, 1)
-app.add(eye_btn, 1, 2, align='center')
+app.add(tabs_cont, 2, 2, fill=True, stretch=True)
 
 app.run()
