@@ -6,6 +6,8 @@ with open("cian is cute.txt", "r") as file:
 
 eye = 2
 pattern = r'\d'
+length_advice = "rizz"
+advice_list = ""
 
 def EYE(event):
     global eye
@@ -13,17 +15,17 @@ def EYE(event):
     text_box.toggle()
     
 
-
 def textbox(event):
+    global length_advice
+    global advice_list
     text = text_box.text
-    advice_list = advice.text
     print(text)
     score = 0
 
     if len(text) > 5: 
+
         score += 10
-    else:   
-        advice.text = "adding more characters could greatly improve your passwords strength\n"
+        length_advice = "add more characters"
     if len(text) > 7: 
         score += 10
     if len(text) > 9:
@@ -63,6 +65,11 @@ def textbox(event):
         label.text = "ehh"
     else: 
         label.text = "bad "
+    
+    
+advice_list = [
+    length_advice,
+    length_advice]
 
 app = gp.GooeyPieApp(">:)")
 app.width = 400
@@ -84,7 +91,7 @@ else:
     text_box = gp.Secret(tab1_tab)
     text_box.add_event_listener('change', textbox)
 
-advice = gp.Label(tab2_tab,'')
+advice = gp.Label(tab2_tab,("\n".join(advice_list)))
 text_box.add_event_listener('change', textbox)
 
 
