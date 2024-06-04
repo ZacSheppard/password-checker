@@ -8,7 +8,7 @@ eye = 2
 pattern = r'\d'
 length_advice = "rizz"
 advice_list = ""
-
+updated_advice_list = ""
 def EYE(event):
     global eye
     eye =+ 1
@@ -18,6 +18,7 @@ def EYE(event):
 def textbox(event):
     global length_advice
     global advice_list
+    global updated_advice_list
     text = text_box.text
     print(text)
     score = 0
@@ -26,6 +27,11 @@ def textbox(event):
 
         score += 10
         length_advice = "add more characters"
+        advice_list = [length_advice,length_advice]
+        updated_advice_list = list(filter(None, advice_list))
+        advice.text = "\n".join(updated_advice_list)
+     
+
     if len(text) > 7: 
         score += 10
     if len(text) > 9:
@@ -91,7 +97,7 @@ else:
     text_box = gp.Secret(tab1_tab)
     text_box.add_event_listener('change', textbox)
 
-advice = gp.Label(tab2_tab,("\n".join(advice_list)))
+advice = gp.Label(tab2_tab,("\n".join(updated_advice_list)))
 text_box.add_event_listener('change', textbox)
 
 
