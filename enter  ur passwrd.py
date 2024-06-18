@@ -5,16 +5,21 @@ with open("cian is cute.txt", "r") as file:
     file_content = file.read()
 
 def idkwhattocallthis():
-    advice_list = [length_advice,sigma]
+    advice_list = [listlist, length_advice5,speshspesh, upiesupies, numnum]
     updated_advice_list = list(filter(None, advice_list))
     advice.text = "\n".join(updated_advice_list)
     
 
-
 eye = 2
 pattern = r'\d'
-length_advice = "rizz"
-sigma = "cian is my king"
+length_advice5 = "you still havent told me if youre a jittleyang or a fuhuhlatoogan"
+numnum = "Add some numbers"
+speshspesh = "Add some special characters like #, @, ! ect  "
+upiesupies = "Add some uppercase characters"
+listlist = ""
+
+
+"Add some special characters like #, @, ! ect  "
 advice_list = ""
 updated_advice_list = ""
 def EYE(event):
@@ -24,41 +29,70 @@ def EYE(event):
     
 
 def textbox(event):
-    global length_advice
+    global length_advice5
     global advice_list
     global updated_advice_list
+    global speshspesh
+    global upiesupies
+    global numnum
+    global listlist
     text = text_box.text
     print(text)
     score = 0
 
     if len(text) > 5: 
-        length_advice = ""
+        length_advice5 = "add more characters"
         idkwhattocallthis()
         score += 10
     else:  
-        length_advice = "add more characters"
+        length_advice5 = "add more characters"
         idkwhattocallthis()
     if len(text) > 7: 
         score += 10
+        length_advice5 = "add more characters!"
+        idkwhattocallthis()
     if len(text) > 9:
         score += 5
+        length_advice5 = "Add More characters!"
+        idkwhattocallthis()
     if len(text) > 11:
         score += 5
+        length_advice5 = "you have a good amount but adding more characters always helps!"
+        idkwhattocallthis()
     if len(text) > 14:
         score += 5
+        length_advice5 = "you have a good amount but adding more characters always helps!"
+        idkwhattocallthis()
     if len(text) > 19:
         score += 5
+        length_advice5 = ""
+        idkwhattocallthis()
     if not text.isalnum():
-        score = score + 20
-    if text.isdigit():
         score = score + 10
+        speshspesh = ""
+        idkwhattocallthis()
+    else:
+        speshspesh = "Add some special characters like #, @, ! ect  "
+        idkwhattocallthis()
     if text.isupper():
         score = score + 10
+        upiesupies = ""
+        idkwhattocallthis()
+    else:
+        upiesupies = "Add some uppercase characters"
     if re.search(pattern, text):
         score += 10
+        numnum = ""
+        idkwhattocallthis()
+    else:
+        numnum = "Add some numbers"
+        idkwhattocallthis()
+
     if text in file_content:
         score = 0 
-    
+        listlist = "This password is one of the most commonly used passwords in the world! might wanna change it"
+        idkwhattocallthis()
+    idkwhattocallthis()
     if len(text) == 0:
         label.text = ""
     elif text == "bladee":
@@ -80,8 +114,8 @@ def textbox(event):
     
     
 advice_list = [
-    length_advice,
-    length_advice]
+    length_advice5,
+    length_advice5]
 
 app = gp.GooeyPieApp(">:)")
 app.width = 400
