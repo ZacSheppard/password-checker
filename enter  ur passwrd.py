@@ -4,9 +4,17 @@ import re
 with open("cian is cute.txt", "r") as file:
     file_content = file.read()
 
+def idkwhattocallthis():
+    advice_list = [length_advice,sigma]
+    updated_advice_list = list(filter(None, advice_list))
+    advice.text = "\n".join(updated_advice_list)
+    
+
+
 eye = 2
 pattern = r'\d'
 length_advice = "rizz"
+sigma = "cian is my king"
 advice_list = ""
 updated_advice_list = ""
 def EYE(event):
@@ -24,14 +32,12 @@ def textbox(event):
     score = 0
 
     if len(text) > 5: 
-
+        length_advice = ""
+        idkwhattocallthis()
         score += 10
+    else:  
         length_advice = "add more characters"
-        advice_list = [length_advice,length_advice]
-        updated_advice_list = list(filter(None, advice_list))
-        advice.text = "\n".join(updated_advice_list)
-     
-
+        idkwhattocallthis()
     if len(text) > 7: 
         score += 10
     if len(text) > 9:
