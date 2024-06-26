@@ -114,30 +114,28 @@ def textbox(event):
 
     if text in file_content:
         score = 0 
-        listlist = "This password is one of the most commonly used passwords in the world! might wanna change it"
+        listlist = "This password is one of the most commonly used passwords in the world!\nmight wanna change it"
         idkwhattocallthis()
     else: 
         listlist = ""
         idkwhattocallthis()
 
     if len(text) == 0:
-        label.text = ""
-    elif text == "bladee":
-        label.text = "greasy"
+        label.text = "Enter A Password And Have It Rated"
     elif text == "Sam":
         label.text = "ginger"
     elif score >= 70:
-        label.text = "5 Stars! ★★★★★"
+        label.text = "Password Rating:\n5 Stars! ★★★★★"
     elif score >= 60:
-        label.text = "4 Stars ★★★★"
+        label.text = "Password Rating:\n4 Stars ★★★★"
     elif score >= 40:
-        label.text = "3 Stars ★★★"
+        label.text = "Password Rating:\n3 Stars ★★★"
     elif score >= 30:
-        label.text = "2 Stars ★★"
+        label.text = "Password Rating:\n2 Stars ★★"
     elif score >= 20:
-        label.text = "1 Star ★"
+        label.text = "Password Rating:\n1 Star ★"
     else: 
-        label.text = "Zero Stars"
+        label.text = "Password Rating:\nZero Stars"
     
 advice_list = [
     length_advice5,
@@ -147,16 +145,16 @@ advice_list = [
     listlist
 ]
 
-app = gp.GooeyPieApp("Password Checker")
-app.width = 400
-app.height = 100
+app = gp.GooeyPieApp("Enter ur Passwrd")
+app.width = 410
+app.height = 125
 tabs_cont = gp.TabContainer(app)
-tabs_cont.width = 400
-tabs_cont.height = 100
+tabs_cont.width = 410
+tabs_cont.height = 125
 tab1_tab = gp.Tab(tabs_cont, 'Password')
 tab2_tab = gp.Tab(tabs_cont, 'Feedback')
 
-eye_btn = gp.Button(tab1_tab, 'sneak peek?', EYE)
+eye_btn = gp.Button(tab1_tab, 'Show Password', EYE)
 
 if eye % 2 != 0:
     text_box = gp.Input(tab1_tab)
@@ -168,7 +166,7 @@ else:
 advice = gp.Label(tab2_tab, "\n".join(updated_advice_list))
 text_box.add_event_listener('change', textbox)
 
-label = gp.Label(tab1_tab, '')
+label = gp.Label(tab1_tab, 'Enter A Password And Have It Rated')
 tab1_tab.set_grid(2, 2)
 tab1_tab.add(text_box, 1, 1)
 tab1_tab.add(label, 2, 1)
