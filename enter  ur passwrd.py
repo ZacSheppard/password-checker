@@ -1,6 +1,6 @@
 import gooeypie as gp
 import re
-
+#
 with open("cian is cute.txt", "r") as file:
     file_content = file.read()
 
@@ -32,8 +32,8 @@ speshspesh = "Add some special characters like #, @, !, etc."
 upiesupies = "Add some uppercase characters"
 listlist = ""
 
-advice_list = ""
-updated_advice_list = ""
+advice_list = "  "
+updated_advice_list = "  "
 
 def EYE(event):
     global eye
@@ -182,3 +182,4 @@ app.set_grid(2, 2)
 app.add(tabs_cont, 2, 2, fill=True, stretch=True)
 
 app.run()
+#
